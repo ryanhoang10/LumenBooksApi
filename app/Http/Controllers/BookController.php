@@ -92,4 +92,49 @@ class BookController extends Controller
 
       return $this->successResponse($book);
     }
+
+    /*
+    * Obtain the full list of string form the string service
+    * @return string
+    */
+    public function obtainBooks()
+    {
+        return $this->performRequest('GET', '/books');
+    }
+
+    /*
+    * Create new book using the string service
+    * @return string
+    */
+    public function createBook($data)
+    {
+        return $this->performRequest('POST', '/books', $data);
+    }
+
+    /*
+    * Returns single string using the string service
+    * @return string
+    */
+    public function obtainBook($book)
+    {
+        return $this->performRequest('POST', "/books/{$book}");
+    }
+
+    /*
+    * Updates single string using the string service
+    * @return string
+    */
+    public function editBook($data, $book)
+    {
+        return $this->performRequest('PUT', "/books/{$book}", $data);
+    }
+
+    /*
+    * Removes single string using the string service
+    * @return string
+    */
+    public function deleteBook($book)
+    {
+        return $this->performRequest('DELETE', "/books/{$book}");
+    }
 }
